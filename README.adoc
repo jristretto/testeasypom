@@ -19,7 +19,7 @@ You can use the configuration by defining testeasypom as the parent by simply ad
   <parent>
       <groupId>io.github.sebivenlo</groupId>
       <artifactId>testeasypom</artifactId>
-      <version>4.0.11</version>
+      <version>21.0.0</version>
       <relativePath/>
   </parent>
 ----
