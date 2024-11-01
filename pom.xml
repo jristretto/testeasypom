@@ -76,7 +76,7 @@
         <preview></preview>
         <checkstyle.config.location>${user.home}/.m2/sebivenlo_checks.xml</checkstyle.config.location>
         <javadoc.location>/usr/share/doc/jdk-11-doc/docs/api/</javadoc.location>
-        <pmd.version>7.6.42.0</pmd.version>
+        <pmd.version>7.6.0</pmd.version>
         <javafx-maven-plugin-version>0.0.8</javafx-maven-plugin-version>
         <javadoc-highlight>true</javadoc-highlight>
     </properties>

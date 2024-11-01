@@ -17,9 +17,9 @@ You can use the configuration by defining testeasypom as the parent by simply ad
 [source,xml]
 ----
   <parent>
-      <groupId>io.github.sebivenlo</groupId>
+      <groupId>org.jristretto</groupId>
       <artifactId>testeasypom</artifactId>
-      <version>4.0.11</version>
+      <version>11.0.0</version>
       <relativePath/>
   </parent>
 ----
@@ -48,17 +48,17 @@ where `property-name` is the name, and the `value` is the value.
 |project.build.sourceEncoding |UTF8| source encoding of java files
 |java.lib.dir| /usr/share/java| where the general java libs for extendsions are stored
 |java.release | 11| java version
-|mockito.core.version|4.3.1|
-|junit.jupiter.version|5.8.2|
-|assertj.core.version|3.22.0|
-|jacoco.version|0.8.78
+|mockito.core.version|5.14.2|
+|junit.jupiter.version|5.11.2|
+|assertj.core.version|3.26.3|
+|jacoco.version|0.8.12
 |jacocoArgLine| |defined to be able to configure jacoco
 |argLine|| to be able to pass extra arguments
 |surefire.opens|| to be able to pass opens statement to the jvm during test runs
 |maven.surefire.version|3.0.0-M5|surefire version
 |checkstyle.config.location| ${user.home}/.m2/sebivenlo_checks.xml | checkstyle config
 |javadoc.location| /usr/share/doc/openjdk-11-doc/docs/api/|to link javadoc locally
-|pmdVersion|6.42.0|
+|pmdVersion|7.6.0|
 |javafx-maven-plugin-version|0.0.8|
 |====
 
