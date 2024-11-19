@@ -58,7 +58,7 @@ where `property-name` is the name, and the `value` is the value.
 |maven.surefire.version|3.0.0-M5|surefire version
 |checkstyle.config.location| ${user.home}/.m2/sebivenlo_checks.xml | checkstyle config
 |javadoc.location| /usr/share/doc/openjdk-11-doc/docs/api/|to link javadoc locally
-|pmdVersion|6.42.0|
+|pmdVersion|7.6.0|
 |javafx-maven-plugin-version|0.0.8|
 |====
 
@@ -99,6 +99,14 @@ In the example you see opening and exporting parts of javafx for the purpose of 
 
 With testeasypom, the only configuration left to you is adding the actual dependencies of your project and maybe test libraries
 for JavaFX, such as testfx.
+
+=== Other useful properties
+
+Other than the above, the following properties are used/considered by this parent pom.
+
+* **preview**  Set this value to --enable-preview to enable preview features as far as the compiler is considered.
+* **argLine** to specify parameters to the program when running.
+* **exec.Main** the program entry.
 
 == For maintainers of public maven modules
 
