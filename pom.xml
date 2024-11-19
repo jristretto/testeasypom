@@ -33,13 +33,13 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <groupId>org.jristretto</groupId>
+    <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
     <version>17.0.0</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
-    <url>https://sebivenlo.github.io/testeasypom/</url>
+    <url>https://jristretto.github.io/testeasypom/</url>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -53,7 +53,7 @@
     <scm>
         <connection>scm:git:git://github.com/jristretto/testeasypom.git</connection>
         <developerConnection>scm:git:ssh://github.com:jrsitretto/testeasypom.git</developerConnection>
-        <url>https://github.com/sebivenlo/testeasypom/tree/main</url>
+        <url>https://github.com/jristretto/testeasypom/tree/main</url>
     </scm>
     
     <properties>
@@ -128,7 +128,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.5.0</version>
                 </plugin>                
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -276,6 +276,24 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <!--<version>3.5.0</version>-->
+                <executions>
+                    <execution>
+                        <id>java</id>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>--enable-preview</argument>
+                                <argument>${exec.mainClass}</argument>
+                            </arguments>
+                                    
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -291,8 +309,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <release>${java.release}</release>
-                    <source>${java.release}</source>
-                    <target>${java.release}</target>
+                    <!--                    <source>${java.release}</source>
+                    <target>${java.release}</target>-->
                     <compilerArgs>
                         <arg>${preview}</arg>
                     </compilerArgs>
