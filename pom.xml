@@ -33,13 +33,13 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <groupId>org.jristretto</groupId>
+    <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
     <version>11.0.0</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
-    <url>https://sebivenlo.github.io/testeasypom/</url>
+    <url>https://jristretto.github.io/testeasypom/</url>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -53,7 +53,7 @@
     <scm>
         <connection>scm:git:git://github.com/jristretto/testeasypom.git</connection>
         <developerConnection>scm:git:ssh://github.com:jrsitretto/testeasypom.git</developerConnection>
-        <url>https://github.com/sebivenlo/testeasypom/tree/main</url>
+        <url>https://github.com/jristretto/testeasypom/tree/main</url>
     </scm>
     
     <properties>
