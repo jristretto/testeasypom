@@ -33,10 +33,10 @@
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
         </license>
     </licenses>
-    <groupId>org.jristretto</groupId>
+    <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
-    <version>11.0.0</version>
+    <version>21.0.0</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
     <url>https://sebivenlo.github.io/testeasypom/</url>
@@ -53,13 +53,13 @@
     <scm>
         <connection>scm:git:git://github.com/jristretto/testeasypom.git</connection>
         <developerConnection>scm:git:ssh://github.com:jrsitretto/testeasypom.git</developerConnection>
-        <url>https://github.com/sebivenlo/testeasypom/tree/main</url>
+        <url>https://github.com/jristretto/testeasypom/tree/main</url>
     </scm>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.lib.dir>/usr/share/java</java.lib.dir>
-        <java.release>11</java.release>
+        <java.release>21</java.release>
         <mockito.core.version>5.14.2</mockito.core.version>
         <junit.jupiter.version>5.11.2</junit.jupiter.version>
         <assertj.core.version>3.26.3</assertj.core.version>
@@ -128,7 +128,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.5.0</version>
                 </plugin>                
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -193,7 +193,7 @@
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.7.3</version>
+                            <version>4.8.6</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -276,6 +276,24 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <!--<version>3.5.0</version>-->
+                <executions>
+                    <execution>
+                        <id>java</id>
+                        <configuration>
+                            <executable>java</executable>
+                            <arguments>
+                                <argument>--enable-preview</argument>
+                                <argument>${exec.mainClass}</argument>
+                            </arguments>
+                                    
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -291,8 +309,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <release>${java.release}</release>
-                    <source>${java.release}</source>
-                    <target>${java.release}</target>
+                    <!--                    <source>${java.release}</source>
+                    <target>${java.release}</target>-->
                     <compilerArgs>
                         <arg>${preview}</arg>
                     </compilerArgs>
