@@ -118,11 +118,11 @@ If you want to deploy an artifact using this pom as parent to maven-central, you
 * Add the url of the project.
 * Make sure you have a working gpg config and as described in https://central.sonatype.org/publish/publish-maven/[sonatype publish maven artifact].
 
-Then deploy using the ossrh-release profile as in
+Then deploy using the publishing-central profile as in
 
 [source,sh]
 ----
-mvn -P ossrh-release deploy
+mvn -P publish-central deploy
 ----
 
 This will sign and upload you artifact.
