@@ -13,6 +13,7 @@
         11.0.0 to work with Java version 11 LTS and above
         17.0.0 to work with Java version 17 LTS and above
         21.0.0 to work with Java version 21 LTS and above
+        25.0.0 to work with Java version 25 LTS and above
     </description>
 
     <developers>
@@ -36,10 +37,10 @@
     <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
-    <version>21.0.0</version>
+    <version>25.0.2</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
-    <url>https://sebivenlo.github.io/testeasypom/</url>
+    <url>https://jristretto.github.io/testeasypom/</url>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -52,18 +53,18 @@
     </distributionManagement>
     <scm>
         <connection>scm:git:git://github.com/jristretto/testeasypom.git</connection>
-        <developerConnection>scm:git:ssh://github.com:jrsitretto/testeasypom.git</developerConnection>
-        <url>https://github.com/jristretto/testeasypom/tree/main</url>
+        <developerConnection>scm:git:ssh://github.com:jristretto/testeasypom.git</developerConnection>
+        <url>https://github.com/jristretto/testeasypom</url>
     </scm>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.lib.dir>/usr/share/java</java.lib.dir>
-        <java.release>21</java.release>
-        <mockito.core.version>5.14.2</mockito.core.version>
-        <junit.jupiter.version>5.11.2</junit.jupiter.version>
-        <assertj.core.version>3.26.3</assertj.core.version>
-        <jacoco.version>0.8.12</jacoco.version>
+        <java.release>25</java.release>
+        <mockito.core.version>5.21.0</mockito.core.version>
+        <junit.jupiter.version>6.0.2</junit.jupiter.version>
+        <assertj.core.version>3.27.6</assertj.core.version>
+        <jacoco.version>0.8.14</jacoco.version>
         <!-- empty argline is used by surefire and set by jacoco profile -->
         <jacocoArgLine></jacocoArgLine>
         <argLine></argLine>
@@ -71,12 +72,12 @@
         <surefire.opens></surefire.opens>
         <!-- surefire 3.0.0-Mx uses incompatible message handling for
         //  assertions.fail, uses CDATA instead of plain xml text, so for the time being stay at 2.22.2 -->
-        <maven.surefire.version>3.5.1</maven.surefire.version>
+        <maven.surefire.version>3.5.4</maven.surefire.version>
         <maven.compiler.release>${java.release}</maven.compiler.release>
         <preview></preview>
         <checkstyle.config.location>${user.home}/.m2/sebivenlo_checks.xml</checkstyle.config.location>
-        <javadoc.location>/usr/share/doc/jdk-11-doc/docs/api/</javadoc.location>
-        <pmd.version>7.6.0</pmd.version>
+        <javadoc.location>/usr/share/doc/jdk-25-doc/docs/api/</javadoc.location>
+        <pmd.version>7.13.0</pmd.version>
         <javafx-maven-plugin-version>0.0.8</javafx-maven-plugin-version>
         <javadoc-highlight>true</javadoc-highlight>
     </properties>
@@ -93,42 +94,42 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.1</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.7.0</version>
+                    <version>3.9.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.4.2</version>
+                    <version>3.5.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version>
+                    <version>3.14.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.7.1</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <version>3.12.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>exec-maven-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.3</version>
                 </plugin>                
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -148,12 +149,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.20.0</version>
+                    <version>3.21.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.openjfx</groupId>
@@ -163,7 +164,7 @@
                 <plugin>
                     <groupId>org.pitest</groupId>
                     <artifactId>pitest-maven</artifactId>
-                    <version>1.17.0</version>
+                    <version>1.22.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.pitest</groupId>
@@ -175,7 +176,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
@@ -187,7 +188,7 @@
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.8.6.4</version>
+                    <version>4.9.8.2</version>
                     <dependencies>
                         <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
                         <dependency>
@@ -205,7 +206,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.25.0</version>
+                    <version>3.28.0</version>
                     <dependencies>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
@@ -232,7 +233,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>3.5.0</version>
+                    <version>3.6.0</version>
                 </plugin>
             </plugins>
 
@@ -254,7 +255,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.12.0</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -374,7 +375,6 @@
                 <artifactId>maven-release-plugin</artifactId>
             </plugin>
 
-
         </plugins>
         <extensions>
             <!-- Enabling the use of SSH -->
@@ -396,7 +396,7 @@
             <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-core</artifactId>
-                <version>5.9.0</version>
+                <version>${mockito.core.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -443,7 +443,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <version>3.5.0</version>
+                <version>3.6.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -782,7 +782,7 @@
                                 <additionalDependency>
                                     <groupId>org.assertj</groupId>
                                     <artifactId>assertj-core</artifactId>
-                                    <version>3.22.0</version>
+                                    <version>3.27.3</version>
                                     <scope>test</scope>
                                 </additionalDependency>
                                 <additionalDependency>
@@ -827,7 +827,7 @@
                     <plugin>
                         <!-- explicitly define maven-deploy-plugin after other to force exec order -->
                         <artifactId>maven-deploy-plugin</artifactId>
-                        <version>3.1.3</version>
+                        <version>3.1.4</version>
                         <executions>
                             <execution>
                                 <id>deploy</id>
@@ -1081,13 +1081,42 @@
             </build>
         </profile>
         <profile>
-            <id>ossrh-release</id>
+            <id>mockito-agent</id>
+            <activation>
+                <jdk>[24,)</jdk>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-dependency-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>properties</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <argLine>@{argLine} -Dnet.bytebuddy.experimental=true -javaagent:${org.mockito:mockito-core:jar}</argLine>
+                        </configuration>
+                    </plugin>
+
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>publish-central</id>
             <build>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
-                        <version>3.2.7</version>
+                        <version>3.2.8</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -1097,6 +1126,17 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.sonatype.central</groupId>
+                        <artifactId>central-publishing-maven-plugin</artifactId>
+                        <version>0.10.0</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <publishingServerId>central</publishingServerId>
+                            <autoPublish>true</autoPublish>
+                            <waitUntil>published</waitUntil>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
