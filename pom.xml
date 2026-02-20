@@ -37,7 +37,7 @@
     <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
-    <version>25.0.2</version>
+    <version>25.0.3</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
     <url>https://jristretto.github.io/testeasypom/</url>
@@ -63,7 +63,7 @@
         <java.release>25</java.release>
         <mockito.core.version>5.21.0</mockito.core.version>
         <junit.jupiter.version>6.0.2</junit.jupiter.version>
-        <assertj.core.version>3.27.6</assertj.core.version>
+        <assertj.core.version>3.27.7</assertj.core.version>
         <jacoco.version>0.8.14</jacoco.version>
         <!-- empty argline is used by surefire and set by jacoco profile -->
         <jacocoArgLine></jacocoArgLine>
