@@ -122,7 +122,7 @@ Then deploy using the ossrh-release profile as in
 
 [source,sh]
 ----
-mvn -P ossrh-release deploy
+mvn -P publish-central deploy
 ----
 
 This will sign and upload you artifact.
