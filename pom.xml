@@ -37,7 +37,7 @@
     <groupId>io.github.jristretto</groupId>
     <artifactId>testeasypom</artifactId>
     <!-- > version reflects jdk tip</-->
-    <version>25.0.4</version>
+    <version>25.0.5</version>
     <packaging>pom</packaging>
     <name>JRistretto :: TestEasyPom</name>
     <url>https://jristretto.github.io/testeasypom/</url>
@@ -58,27 +58,24 @@
     </scm>
     
     <properties>
+        <java.release>25</java.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.lib.dir>/usr/share/java</java.lib.dir>
-        <java.release>25</java.release>
-        <mockito.core.version>5.21.0</mockito.core.version>
-        <junit.jupiter.version>6.0.2</junit.jupiter.version>
+        <maven.surefire.version>3.5.5</maven.surefire.version>
+        <mockito.core.version>5.23.0</mockito.core.version>
+        <junit.jupiter.version>6.0.3</junit.jupiter.version>
         <assertj.core.version>3.27.7</assertj.core.version>
+        <pmd.version>7.25.0</pmd.version>
         <jacoco.version>0.8.14</jacoco.version>
+        <javafx-maven-plugin-version>0.0.8</javafx-maven-plugin-version>
         <!-- empty argline is used by surefire and set by jacoco profile -->
         <jacocoArgLine></jacocoArgLine>
         <argLine></argLine>
-        <!-- for java 9 modules (jigsaw) use surefire.opens to open packages -->
         <surefire.opens></surefire.opens>
-        <!-- surefire 3.0.0-Mx uses incompatible message handling for
-        //  assertions.fail, uses CDATA instead of plain xml text, so for the time being stay at 2.22.2 -->
-        <maven.surefire.version>3.5.5</maven.surefire.version>
         <maven.compiler.release>${java.release}</maven.compiler.release>
         <preview></preview>
         <checkstyle.config.location>${user.home}/.m2/sebivenlo_checks.xml</checkstyle.config.location>
         <javadoc.location>/usr/share/doc/jdk-25-doc/docs/api/</javadoc.location>
-        <pmd.version>7.13.0</pmd.version>
-        <javafx-maven-plugin-version>0.0.8</javafx-maven-plugin-version>
         <javadoc-highlight>true</javadoc-highlight>
     </properties>
 
@@ -99,7 +96,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.5.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -114,7 +111,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.14.1</version>
+                    <version>3.15.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -164,12 +161,12 @@
                 <plugin>
                     <groupId>org.pitest</groupId>
                     <artifactId>pitest-maven</artifactId>
-                    <version>1.22.0</version>
+                    <version>1.23.1</version>
                     <dependencies>
                         <dependency>
                             <groupId>org.pitest</groupId>
                             <artifactId>pitest-junit5-plugin</artifactId>
-                            <version>1.0.0</version>
+                            <version>1.2.3</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -181,20 +178,20 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.8.0</version>
+                            <version>13.4.2</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <groupId>com.github.spotbugs</groupId>
                     <artifactId>spotbugs-maven-plugin</artifactId>
-                    <version>4.9.8.2</version>
+                    <version>4.9.8.3</version>
                     <dependencies>
                         <!-- overwrite dependency on spotbugs if you want to specify the version of spotbugs -->
                         <dependency>
                             <groupId>com.github.spotbugs</groupId>
                             <artifactId>spotbugs</artifactId>
-                            <version>4.8.6</version>
+                            <version>4.9.8</version>
                         </dependency>
                     </dependencies>
                 </plugin>
@@ -255,7 +252,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.12.0</version>
+                <configuration>
+                    <docfilessubdirs>true</docfilessubdirs>
+                    <javadocDirectory>${project.basedir}/src/main/javadoc</javadocDirectory>
+                    <additionalOptions>--syntax-highlight</additionalOptions>
+                </configuration>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -343,12 +344,39 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.5.5</version>
+                <!-- Source: https://mvnrepository.com/artifact/me.fabriciorby/maven-surefire-junit5-tree-reporter -->
+                <dependencies>
+                    <dependency>
+                        <groupId>me.fabriciorby</groupId>
+                        <artifactId>maven-surefire-junit5-tree-reporter</artifactId>
+                        <version>1.5.1</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <argLine>
                         @{argLine}
                         ${surefire.opens}
                     </argLine>
                     <trimStackTrace>true</trimStackTrace>
+                    <reportFormat>xml</reportFormat>
+                    <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
+                        <disable>false</disable>
+                        <version>3.0.2</version>
+                        <usePhrasedFileName>false</usePhrasedFileName>
+                        <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
+                        <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
+                        <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
+                    </statelessTestsetReporter>
+                    <statelessTestsetInfoReporter 
+                        implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoReporter">
+                        <disable>false</disable>
+                        <usePhrasedClassNameInRunning>true</usePhrasedClassNameInRunning>
+                        <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
+                        <usePhrasedFileName>true</usePhrasedFileName>
+                        <usePhrasedClassNameInRunning>true</usePhrasedClassNameInRunning>
+                        <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
+                    </statelessTestsetInfoReporter>
                 </configuration>
             </plugin>
             <plugin>
@@ -509,11 +537,6 @@
             <activation>
                 <jdk>1.8</jdk>
             </activation>
-            <reporting>
-                <plugins>
-
-                </plugins>
-            </reporting>
         </profile><!-- Java 8 -->
         <profile>
             <id>junit-legacy</id>
@@ -604,6 +627,25 @@
                 </plugins>
             </build>
         </profile><!-- jacoco -->
+        <profile>
+            <id>console-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <!-- This appends your preferred tree visualizer when active -->
+                            <statelessTestsetInfoReporter 
+                                implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoTreeReporter">
+                                <theme>EMOJI</theme>
+                            </statelessTestsetInfoReporter>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile><!-- console-tests-->
+
         <profile>
             <id>fx</id>
             <dependencies>
@@ -753,7 +795,6 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <!--<version>3.4.1</version>-->
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -770,10 +811,6 @@
                                     <url>file://${javadoc.location}</url>
                                     <location>${javadoc.location}</location>
                                 </offlineLink>
-                                <!--                                <offlineLink>
-                                    <url>file:///usr/share/doc/javafx-doc/api/</url>
-                                    <location>/usr/share/doc/javafx-doc/api/</location>
-                                </offlineLink>-->
                             </offlineLinks>
                             <sourcepath>${basedir}/src/main/java;${basedir}/src/test/java</sourcepath>
                             <additionalDependencies>
